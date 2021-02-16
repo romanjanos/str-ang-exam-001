@@ -7,7 +7,7 @@ import { Hero } from '../model/hero';
 })
 export class HeroService {
 
-  private list: Hero[] = [
+  list: Hero[] = [
     { id: 1, name: "Batman", superPower: "Rich", address: "Gotham" },
     { id: 2, name: "Superman", superPower: "Strong", address: "Smallville" },
     { id: 3, name: "Supergirl", superPower: "Smart", address: "Wasinghton" },
@@ -15,11 +15,9 @@ export class HeroService {
     { id: 5, name: "Hulk", superPower: "Indestructible", address: "Planet" },
   ]
 
-  list$: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>([]);
-
   constructor() { }
-
-  getAll(): void {
-    this.list$.next(this.list);
+  
+  getAll(): Hero[] {
+    return this.list;
   }
 }

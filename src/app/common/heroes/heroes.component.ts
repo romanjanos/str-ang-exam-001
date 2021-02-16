@@ -10,7 +10,11 @@ import { HeroService } from 'src/app/service/hero.service';
 })
 export class HeroesComponent implements OnInit {
 
-  heroList$: BehaviorSubject<Hero[]> = this.heroService.list$;
+  // heroList$: BehaviorSubject<Hero[]> = this.heroService.list$;
+
+  heroList =this.heroService.list;
+
+  phrase: string = "";
 
   constructor(
     private heroService: HeroService
@@ -19,5 +23,10 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
     this.heroService.getAll();
   }
+
+  searchEvent(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
+
 
 }
